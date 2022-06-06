@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     path: SRC_PATH
   },
-  devtool: 'eval',
+  devtool: 'eval-cheap-source-map',
   output: {
     path: DIST_PATH,
     filename: 'bundle.js'
