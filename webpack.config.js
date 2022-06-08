@@ -1,20 +1,32 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, 'client', 'src', 'index.jsx');
 const DIST_PATH = path.resolve(__dirname, 'client', 'dist');
 const TEMPLATE_PATH = path.resolve(__dirname, 'client', 'template.html');
 
 module.exports = {
-  entry: {
-    path: SRC_PATH
-  },
-  devtool: 'eval-cheap-source-map',
-  output: {
-    path: DIST_PATH,
-    filename: 'bundle.js'
-  },
   mode: 'development',
+  entry: [
+    SRC_PATH,
+    'webpack-hot-middleware/client?path=/__live_reload&timeout=100&reload=true'
+  ],
+  devtool: 'eval',
+  output: {
+    filename: '[name].bundle.js',
+    path: DIST_PATH,
+    publicPath: '/',
+    clean: true
+  },
+  devServer: {
+    hot: true,
+    contentBase: DIST_PATH,
+    publicPath: '*'
+  },
+  optimization: {
+    runtimeChunk: 'single',
+  },
   module: {
     rules: [
       {
@@ -31,12 +43,21 @@ module.exports = {
         }
       },
       {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+      {
         test: /\.css$/,
         use: ['style-loader, css-loader']
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: TEMPLATE_PATH })
+    new HtmlWebpackPlugin({
+      template: TEMPLATE_PATH,
+      title: `Lizano's Glass Haus`
+    }),
+    new HotModuleReplacementPlugin(),
   ]
 };

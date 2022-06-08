@@ -6,8 +6,13 @@ import App from './components/App.jsx'
 const container = document.getElementById('app');
 const app = ReactDOM.createRoot(container);
 
-app.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
+const render = () => {
+  app.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  )
+};
+render();
+
+module.hot && module.hot.accept(() => render());
