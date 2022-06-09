@@ -8,49 +8,35 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
-  {
-    page: 'About',
-    link: '/about'
-  },
-  {
-    page: 'Contact',
-    link: '/contact'
-  },
-  {
-    page: 'Products',
-    link: '/products'
-  }
+  { page: 'about', link: '/about' },
+  { page: 'contact', link: '/contact' },
+  { page: 'products', link: '/products' }
 ];
 
 const Nav = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
-  };
-  const handleOpenUserMenu = (e) => {
-    setAnchorElUser(e.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar
+      position='static'
+      style={{
+        backgroundColor: '#dbb30f',
+      }}
+    >
+      <Container maxWidth='lg'>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -61,12 +47,14 @@ const Nav = () => {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontWeight: 700,
+              fontFamily: 'Luckiest Guy',
+              fontWeight: 400,
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            Lizano's Glass Haus
+            Lizano&apos;s Glass Haus
+
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -100,7 +88,7 @@ const Nav = () => {
             >
               {pages.map(({ page, i }) => (
                 <MenuItem key={i + page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -115,14 +103,13 @@ const Nav = () => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontFamily: 'Luckiest Guy',
+              fontWeight: 400,
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Lizano&apos;s Glass Haus
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map(({ page, link }) => (

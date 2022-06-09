@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rimraf dist && webpack --watch --mode=development",
-    "build": "rimraf dist && webpack --mode=production",
-    "start": "nodemon server"
+    "dev": "rimraf dist && webpack --watch",
+    "build": "rimraf dist && webpack",
+    "start": "rimraf client/dist && nodemon server",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "eslint": "^8.17.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "html-webpack-plugin": "^5.5.0",
     "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",

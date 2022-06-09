@@ -19,7 +19,7 @@ app.use(
     index: path.resolve(__dirname, 'client', 'dist'),
     writeToDisk: true
   })
-)
+);
 
 app.use(
   require('webpack-hot-middleware')(compiler, {
@@ -33,9 +33,9 @@ app.use(
 app.get('*', (req, res) => {
   // if (req.url === "/__webpack_hmr") {return;}
   res.sendFile(path.resolve(clientPath, 'index.html'), (err) => {
-    if (err) {res.status(500).send(err);}
-  })
-})
+    if (err) { res.status(500).send(err); }
+  });
+});
 
 app.listen(PORT, () => console.log(`✨ Servin up http://localhost:${PORT}`));
 

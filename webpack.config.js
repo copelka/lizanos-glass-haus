@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: TEMPLATE_PATH,
-      title: `Lizano's Glass Haus`
+      title: 'Lizano&apos;s Glass Haus'
     }),
     new HotModuleReplacementPlugin(),
   ]

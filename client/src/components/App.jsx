@@ -6,6 +6,7 @@ import Products from './Products.jsx';
 import Footer from './Footer.jsx';
 import Nav from './Nav.jsx';
 import { Routes, Route } from 'react-router-dom';
+import { AppContainer, ViewContainer } from '../styles/appStyles.js';
 
 const routing = () => (
   <Routes>
@@ -14,17 +15,21 @@ const routing = () => (
     <Route path="contact" element={<Contact />} />
     <Route path="products" element={<Products />} />
   </Routes>
-)
+);
 
 const App = () => {
 
   return (
     <div>
       <Nav />
-      { routing() }
+      <AppContainer>
+        <ViewContainer>
+          { routing() }
+        </ViewContainer>
+      </AppContainer>
       <Footer />
     </div>
-  )
+  );
 };
 
 export default App;
